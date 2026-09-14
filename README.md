@@ -25,14 +25,14 @@ This portfolio showcases projects that demonstrate my ability to analyze busines
 ## Portfolio Projects
 
 ### 1. Sales Performance Dashboard 
-**Status:** In progress 
+**Status:** Completed
 
 Objective: 
 Analyse retail sales performance, Identity trends and provide business recommendations through interactive dashboards. 
 
 Tools: 
 -Power BI
-- Exce
+- Excel
 
 Skills Demonstrated: 
 -KPI Reporting
@@ -42,7 +42,7 @@ Skills Demonstrated:
 ---
 
 ### 2. Customer Churn Analysis
-**Status:** Planned 
+**Status:** Completed
 
 Objective:
 Identity factors contributing to customer churn and recommend retention strategies 
