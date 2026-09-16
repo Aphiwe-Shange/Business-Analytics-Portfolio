@@ -60,7 +60,7 @@ Skills Demonstrated:
 ---
 
 ### 3. SME Business Intelligence Project 
-**Status:** Planned 
+**Status:** Completed 
 
 Objective: 
 Evaluate business performance and identify opportunities to improve profitability and operational efficiency. 
@@ -77,7 +77,7 @@ Skills Demonstrated:
 ---
 
 ### 4. Process Improvement Case Study
-**Status:** Planned 
+**Status:** Completed
 
 Objective: 
 Analyze an existing business process, identify inefficiencies and propose an improved future. 
@@ -94,7 +94,7 @@ Skills Demonstrated:
 ---
 
 ### 5. SQL Business Insights Project
-**Status:** Planned
+**Status:** In Progress 
 
 Objective: 
 Use SQL to answer key business questions and uncover actionable insights. 
