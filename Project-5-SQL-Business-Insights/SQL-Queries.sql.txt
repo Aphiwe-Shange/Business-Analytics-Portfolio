@@ -1,0 +1,54 @@
+Query 1 
+SELECT
+  CustomerId, 
+  SUM(Total) As Revenue 
+ FROM Invoice
+ GROUP BY customerid
+ ORDER BY Revenue DESC; 
+
+Query 2 
+SELECT
+  billingcountry,
+  SUM(Total) AS Revenue
+ FROM Invoice
+ GROUP BY billingcountry 
+ ORDER BY Revenue DESC;
+
+Query 3
+SELECT
+  g.name, 
+  COUNT (*) AS Sales 
+ FROM InvoiceLine il
+ JOIN Track t
+  ON il.TrackId = t.TrackId
+ JOIN Genre g 
+  ON  t.GenreId = g.GenreId
+ GROUP BY g.Name
+ ORDER BY Sales DESC; 
+
+Query 4 
+SELECT
+     e.FirstName,
+     e.LastName,
+     SUM(i.Total) AS Revenue
+FROM Customer c
+JOIN Employee e
+     ON c.SupportRepId = e.EmployeeId
+JOIN Invoice i
+     ON c.CustomerId = i.CustomerId
+GROUP BY e.EmployeeId
+ORDER BY Revenue DESC;
+
+
+Query 5 
+SELECT
+     e.FirstName,
+     e.LastName,
+     SUM(i.Total) AS Revenue
+FROM Customer c
+JOIN Employee e
+     ON c.SupportRepId = e.EmployeeId
+JOIN Invoice i
+     ON c.CustomerId = i.CustomerId
+GROUP BY e.EmployeeId
+ORDER BY Revenue DESC;
