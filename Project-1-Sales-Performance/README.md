@@ -20,8 +20,6 @@ Sample Superstore dataset (retail sales data, 2014-2017) order-level detail incl
 
 ## Report 1: Company-Wide Performance Overview (Page 1) 
 
-![Sales Performance Dashboard overview] (./screenshots/page1-overview.png)
-
 **Headline numbers:** R2.30M total sales - R286.40K total profit - 5k orders - 38K units sold - 12.47% profit margin
 
 **Findings:**
@@ -36,8 +34,6 @@ This page tells what is happening. It does not yet explain why South lags which 
 ---
 
 ## Report 2: Regional Deep-Dive - Why is the South Region Underperforming? (Page 2)
-
-![Regional Deep-Dive: South region diagnostic](./screenshots/page2-regional-deepdive.png) 
 
 **South, isolated:** R391.72K sales - R46.75K profit - 822 orders - 6K units - **11.93% profit margin** 
 
