@@ -1,0 +1,82 @@
+# SME Business Intelligence Dashboard — Business Analyst Portfolio Project
+
+## Overview
+A two-page Power BI dashboard analyzing sales performance for a small/mid-size enterprise. Page 1 gives a company-wide overview; Page 2 is a growth deep-dive answering the question the overview raises but doesn't explain: **where is growth actually coming from, and where's the next opportunity?**
+
+## Business Problem
+Leadership sees an overall revenue figure but no breakdown of which categories, regions, or customer segments are actually driving performance year over year. Without that, investment decisions default to whatever's already largest, rather than whatever's actually growing. This project was built to answer three questions:
+1. What is the current scale of the business — revenue, orders, customers?
+2. Is the business growing, and if so, where specifically?
+3. Which segment or category represents the best opportunity for continued investment?
+
+## Data Source
+SME sales dataset (order-level detail: sales, category, region, customer segment, order date, 2015–2018).
+
+## Tools Used
+- **Power BI Desktop** — data modeling, Power Query, DAX, visualization
+- **Power Query** — diagnosed and corrected a date locale mismatch (source dates were DD/MM/YYYY but were being parsed as MM/DD/YYYY), which had caused 61% of total revenue to fall into an unassigned "blank year" bucket, invisible to every time-based chart
+- **DAX** — time-bound revenue measures (Revenue 2017, Revenue 2018) and a YoY Growth % measure
+
+---
+
+## Report 1: Company-Wide Overview (Page 1)
+
+**Headline numbers:** 2.26M total revenue · 5K orders · 459.48 average revenue per order · 793 customers
+
+**Findings:**
+- Technology is the largest revenue category, followed by Furniture and Office Supplies.
+- West and East are the strongest regions; South is the smallest.
+- Consumer is the largest customer segment (50.76%), followed by Corporate (30.44%) and Home Office (18.79%).
+
+This page establishes scale. It doesn't show trajectory — which categories or segments are actually gaining ground — which is what Page 2 investigates.
+
+---
+
+## Report 2: Where's the Growth Coming From? (Page 2)
+
+**Data quality note:** before this page could be built, a significant issue surfaced — roughly 61% of total revenue had no valid Order Date and was being silently excluded from every year-based visual. The root cause was a locale mismatch: source dates were formatted DD/MM/YYYY, but Power Query was parsing them as MM/DD/YYYY (US format), which caused any date with a day value above 12 to fail outright, and silently misread the rest (e.g. reading 9 December as September 12). This was corrected by reapplying the date type conversion with the correct locale, recovering the missing data and correcting the mis-parsed portion. All figures below reflect the corrected dataset, and were cross-checked for consistency across independent visuals before being reported.
+
+**Overall: +20% revenue growth, 2017 to 2018** (600,193 → 722,052)
+
+**By Category:**
+| Category | 2017 | 2018 | YoY Growth |
+|---|---|---|---|
+| Furniture | 195,813 | 212,314 | +8% |
+| Office Supplies | 182,418 | 240,368 | **+32%** |
+| Technology | 221,962 | 269,371 | +21% |
+
+**By Segment:**
+| Segment | 2017 | 2018 | YoY Growth |
+|---|---|---|---|
+| Consumer | 291,143 | 328,604 | +12.9% |
+| Corporate | 204,977 | 236,044 | +15.2% |
+| Home Office | 104,073 | 157,404 | **+51.3%** |
+
+**The key finding:** growth is broad-based — every category and every segment grew — but it isn't evenly distributed. **Office Supplies (+32%)** is outpacing the business's historically largest category, and **Home Office (+51.3%)** is growing more than three times faster than Consumer, despite being the smallest segment. Both represent the same pattern: the fastest-growing parts of the business are not (yet) the largest ones, which means there's real headroom before they catch up to the historically dominant lines.
+
+**Bottom line:** this is a genuine growth story, not a plateau — and the clearest opportunity for continued investment is Home Office, where growth is both fastest and starting from the smallest base.
+
+---
+
+## Recommendations
+
+| # | Recommendation | Rationale | Priority |
+|---|---|---|---|
+| 1 | Increase marketing and account investment in the Home Office segment | Fastest-growing segment (+51.3%) from the smallest base — highest-leverage growth opportunity in the business | High |
+| 2 | Expand Office Supplies range and marketing | Fastest-growing category (+32%); outpacing Technology and Furniture | High |
+| 3 | Investigate what's driving Home Office and Office Supplies growth specifically (new customer acquisition vs. existing customers buying more) | Determines whether to invest in acquisition or retention/upsell to sustain the trend | Medium |
+| 4 | Maintain, but don't over-index on, Technology and Consumer investment | Still the largest lines and still growing, but growing slower than smaller segments — balance further investment accordingly | Medium |
+| 5 | Audit other date fields in the dataset for the same locale issue | The Order Date bug affected 61% of revenue before being caught; Ship Date and any other date columns should be checked the same way | High |
+
+---
+
+## Skills Demonstrated
+- Data quality diagnosis: identifying a locale-based date parsing error affecting the majority of the dataset, and correcting it in Power Query before drawing any conclusions
+- Cross-checking figures across independent visuals to validate a dataset before reporting on it, rather than trusting a single chart
+- DAX time-intelligence measures (year-bound revenue, YoY growth)
+- Translating a growth analysis into a specific, prioritized investment recommendation rather than a generic "keep growing" conclusion
+
+## Next Steps
+- Extend the YoY analysis to include 2015–2016 for a full four-year trend once further validated
+- Break Home Office growth down by category to see what's specifically driving it
+- Apply the same locale-validation check as a standard first step on future projects, given how much it changed this one's conclusions
