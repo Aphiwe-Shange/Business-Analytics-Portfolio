@@ -1,0 +1,46 @@
+# Requirements
+
+Priorities use MoSCoW: **M**ust, **S**hould, **C**ould, **W**on't (this release).
+
+## Functional requirements
+
+| ID | Requirement | Priority |
+|---|---|---|
+| FR-01 | Customers can register with a mobile number and verify it with a one-time PIN | M |
+| FR-02 | Customers can enter personal details and save progress to resume later | M |
+| FR-03 | Customers can photograph a South African ID document and take a selfie in the app | M |
+| FR-04 | The system extracts data from the ID (OCR) and performs a liveness check | M |
+| FR-05 | The system verifies identity against an external identity-service API | M |
+| FR-06 | The system calculates a risk score and routes each application: pass or refer | M |
+| FR-07 | Referred applications appear in a queue for compliance analysts with the reason for referral | M |
+| FR-08 | Analysts can approve or decline a referred application with a reason code | M |
+| FR-09 | On approval, the system creates the customer and account in the core banking system via API | M |
+| FR-10 | Customers can review and e-sign the account agreement | M |
+| FR-11 | Customers receive confirmation by SMS and email | M |
+| FR-12 | A virtual debit card is available in the app immediately after activation | S |
+| FR-13 | Declined customers receive a clear reason and next steps | S |
+| FR-14 | Branch consultants can start an application on behalf of a customer | C |
+| FR-15 | Management dashboard shows applications started, completed, abandoned and referred | S |
+| FR-16 | Physical card delivery tracking | W |
+
+## Non-functional requirements
+
+| ID | Category | Requirement |
+|---|---|---|
+| NFR-01 | Performance | Straight-through cases complete verification in under 60 seconds |
+| NFR-02 | Availability | Onboarding service available 99.5% of the time |
+| NFR-03 | Security | All personal data encrypted in transit and at rest |
+| NFR-04 | Compliance | Meets FICA customer due diligence and POPIA data protection requirements |
+| NFR-05 | Auditability | Every verification decision is logged with timestamp, outcome and rule applied |
+| NFR-06 | Usability | A first-time user completes the flow without help; works on low-end Android devices |
+| NFR-07 | Accessibility | Screens support text scaling and screen readers |
+| NFR-08 | Data retention | Data retained and deleted according to policy and legal retention periods |
+| NFR-09 | Scalability | Handles peak campaign volumes of 5,000 applications per day |
+
+## Business rules
+
+- BR-01: Applicants must be 18 or older.
+- BR-02: A valid South African ID or approved alternative document is required.
+- BR-03: An application with an identity mismatch or a failed liveness check is always referred to a human reviewer.
+- BR-04: Applications incomplete for 14 days are closed and personal data is purged according to policy.
+- BR-05: No account becomes active until the customer has signed the agreement.
