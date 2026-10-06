@@ -1,0 +1,48 @@
+# Backlog Prioritisation and MVP Plan
+
+## Prioritised backlog
+
+| Rank | Story | Priority | Points | Depends on |
+|---|---|---|---|---|
+| 1 | US-01 Register with mobile number | Must | 3 | - |
+| 2 | US-02 Enter details and resume later | Must | 5 | US-01 |
+| 3 | US-03 Capture ID and selfie | Must | 8 | US-02 |
+| 4 | US-04 Automated identity verification | Must | 13 | US-03, identity vendor contract |
+| 5 | US-05 Review referred applications | Must | 8 | US-04 |
+| 6 | US-06 Create customer and account | Must | 8 | US-04, core-banking API access |
+| 7 | US-07 Review and sign agreement | Must | 5 | US-06 |
+| 8 | US-08 Confirmation and virtual card | Must / Should | 5 | US-07 |
+| 9 | US-09 Declined applicant message | Should | 3 | US-05 |
+| 10 | US-10 Funnel dashboard | Should | 8 | US-01 to US-08 |
+| 11 | US-11 Branch-assisted onboarding | Could | 8 | MVP live |
+
+**Total Must-have points:** 55 | **Should:** 11 | **Could:** 8
+
+## MVP definition
+
+The **Minimum Viable Product** is the smallest release that lets a customer open an account end to end without visiting a branch:
+
+US-01 to US-08 (all Must-haves). Without any one of these, the journey does not work.
+
+## Suggested release plan (2-week sprints, assuming a velocity of about 14 points per sprint for a new team)
+
+| Sprint | Goal | Stories |
+|---|---|---|
+| 1 | Customer can register and enter details | US-01, US-02 |
+| 2 | Customer can capture ID; verification integration starts | US-03, start US-04 |
+| 3 | Verification and referral queue work | finish US-04, US-05 |
+| 4 | Account creation and signing work | US-06, US-07 |
+| 5 | Confirmation, virtual card, hardening and pilot readiness | US-08, US-09 |
+| 6 | Reporting and branch assistance | US-10, US-11 |
+
+**MVP pilot** after Sprint 5 with a limited group of customers (for example, staff and a single branch region) before full launch.
+
+## Success measures for the pilot
+
+| Measure | Target |
+|---|---|
+| Straight-through processing rate | 85% or higher |
+| Median time to open an account | under 15 minutes |
+| Abandonment rate | under 15% |
+| Referral resolution time | under 4 working hours |
+| Customer satisfaction (post-onboarding survey) | 4 out of 5 or higher |
