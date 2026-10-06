@@ -1,0 +1,36 @@
+# Risks, Assumptions and Dependencies
+
+## Risks
+
+| ID | Risk | Likelihood | Impact | Mitigation |
+|---|---|---|---|---|
+| R1 | Identity vendor API downtime or slow responses | Medium | High | Queue and retry; fallback to manual review; vendor SLA |
+| R2 | Fraudsters exploit digital onboarding (synthetic IDs, spoofed selfies) | Medium | High | Liveness detection, risk scoring, velocity checks, security review |
+| R3 | Regulatory non-compliance (FICA / POPIA) | Low | Very high | Compliance co-designs rules; legal review before launch; audit logging |
+| R4 | Low adoption by customers without smartphones or data | Medium | Medium | Branch-assisted onboarding (US-11); keep branch channel |
+| R5 | Core-banking API limitations delay integration | Medium | High | Early technical spike; API contract agreed in Sprint 1 |
+| R6 | Branch staff resist change | Medium | Medium | Involve consultants early; reposition role towards advice |
+| R7 | Poor photo quality causes high referral rates | High | Medium | On-screen guidance, automatic quality checks, usability testing |
+| R8 | Straight-through target of 85% not achieved | Medium | Medium | Monitor referral reasons weekly and tune thresholds |
+
+## Assumptions
+
+- A1: Baseline figures in the README are illustrative and would be replaced by real figures from bank data.
+- A2: An external identity-verification vendor is available and contracted.
+- A3: The core banking system exposes APIs to create customers and accounts.
+- A4: The target market has a high rate of smartphone ownership.
+- A5: Compliance accepts automated KYC for low-risk applicants within agreed thresholds.
+
+## Dependencies
+
+- Contract and API access for the identity-verification vendor
+- Core-banking API access and test environment
+- Compliance sign-off on risk thresholds and referral rules
+- Legal approval of the e-signature process
+- Cloud hosting and security approval
+
+## Out of scope for this release
+- Business accounts and joint accounts
+- Credit products (overdrafts, loans, credit cards)
+- Physical card delivery tracking
+- Non-South-African ID documents (to be considered later)
