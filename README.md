@@ -48,19 +48,19 @@ I enjoy the space between business users and technical teams: understanding the 
 **Key findings:** Revenue grew 20% from 2017 to 2018. led by Office Supplies (+35%) and the Home Office segment (+51.3%). 
 **Skills:** Business intelligence, data validation, financial analysis
 
-### 4. Digital Banking Onboarding: Systems Analysis and Agile Case Study
+### 4. Digital Banking Onboarding: Systems Analysis and Agile Case Study *In Progress*
 **Business question:** How can a bank replace a slow, branch-based account opening process with a digital one? 
 **What I did:** Produced the analysis artefacts a development team needs: Stakeholder analysis, functional and non-functional requirements, 11 user stories with Given/When/Then acceptance criteria, MoSCow Prioritization, an MVP release plan, a risk register, As-Is and To-Be process diagrams and low-fidelity wireframes. 
 **Outcome:** A prioritized backlog and a five-sprint MVP plan targeting under-15-minute onboarding and 85% straight-through processing (illustrative targets). 
 **Skills:** Requirements analysis, user stories, process modelling, Agile and SDLC, FICA and POPIA awareness 
 
-### 5. Loan Credit Risk Dashboard 
+### 5. Loan Credit Risk Dashboard *In Progress*
 **Business question:** Is the loan book profitable once losses and costa are counted, and where should the lenders act? 
 **What I did:** Designed KPIs (profit margin, ROI, CAC, Default rate, loss ratio), modelled the data in Power BI with DAX and build a three-page dashboard on a synthetic 12 000-loan dataset. 
 **Key findings:** Net profit was R27.6M (22.5% margin). Customers scoring below 550 were 14% of loans reflect that falling default rates in recent loans reflect immature data, not better credit quality. 
 **Skills:** Financial KPIs, credit risk analysis, DAX, data modelling, executive reporting 
 
-### 6. Payments Ledger: Database Design and SQL Analysis
+### 6. Payments Ledger: Database Design and SQL Analysis *In Progress* 
 **Business question:** How do customers spend, where do payments fail and where is fraud and compliance risk concentrated? 
 **What I did:** Designed a normalized 7-table database with primary and foreign keys, constraints and indexes, drew the ERD, loaded synthetic data and wrote 12 analysis queries. I also found and fixed join fan-out error that inflated balances. 
 **Key findings:** Online payments fail most often (5.8% vs about 3.2% for card and app), travel has the highest fraud-alert rate, and customers with unverified KYC are still transacting. 
