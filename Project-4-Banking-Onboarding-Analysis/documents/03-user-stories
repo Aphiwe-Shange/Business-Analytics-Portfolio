@@ -1,0 +1,139 @@
+# User Stories and Acceptance Criteria
+
+Format: **As a** [role], **I want to** [goal], **so that** [benefit].
+Acceptance criteria use Given / When / Then. Story points are relative estimates (Fibonacci).
+
+---
+
+## Epic 1: Register and capture details
+
+### US-01: Register with my mobile number
+**As a** new customer, **I want to** register with my mobile number and a one-time PIN, **so that** I can start opening an account without visiting a branch.
+**Requirement:** FR-01 | **Priority:** Must | **Points:** 3
+
+**Acceptance criteria**
+- **Given** I enter a valid South African mobile number, **when** I tap "Send OTP", **then** I receive a 6-digit PIN by SMS within 30 seconds.
+- **Given** I enter the correct PIN within 5 minutes, **when** I submit it, **then** I move to the personal details screen.
+- **Given** I enter an incorrect PIN 3 times, **when** I submit the third attempt, **then** the PIN is invalidated and I must request a new one.
+- **Given** I have not accepted the Terms and Privacy Notice, **when** I tap "Send OTP", **then** I see an error and no PIN is sent.
+
+### US-02: Enter my details and resume later
+**As a** new customer, **I want to** save my progress and come back later, **so that** I don't lose my work if I'm interrupted.
+**Requirement:** FR-02 | **Priority:** Must | **Points:** 5
+
+**Acceptance criteria**
+- **Given** I have completed some fields, **when** I tap "Save and finish later", **then** my progress is saved and I receive a link to resume.
+- **Given** I return within 14 days, **when** I open the link and verify my PIN, **then** my saved fields are pre-filled.
+- **Given** I enter a date of birth that makes me under 18, **when** I tap "Continue", **then** I see a message that I must be 18 or older.
+- **Given** a required field is empty, **when** I tap "Continue", **then** the field is highlighted with a specific error message.
+
+---
+
+## Epic 2: Verify identity
+
+### US-03: Capture my ID and selfie
+**As a** new customer, **I want to** photograph my ID and take a selfie in the app, **so that** I don't need certified copies or a branch visit.
+**Requirement:** FR-03 | **Priority:** Must | **Points:** 8
+
+**Acceptance criteria**
+- **Given** I open the capture screen, **when** I grant camera permission, **then** I see a frame guide for the ID.
+- **Given** the photo is blurry or has glare, **when** the image check fails, **then** I am asked to retake it with a tip on what to fix.
+- **Given** I deny camera permission, **when** I tap "Take photo", **then** I see instructions to enable it or the option to visit a branch.
+- **Given** the capture is successful, **when** I tap "Continue", **then** the images are uploaded over an encrypted connection.
+
+### US-04: Automated identity verification
+**As a** compliance officer, **I want** identity data extracted and verified automatically, **so that** most applications don't need manual checking.
+**Requirement:** FR-04, FR-05, FR-06 | **Priority:** Must | **Points:** 13
+
+**Acceptance criteria**
+- **Given** an ID image is uploaded, **when** OCR runs, **then** the name, ID number and date of birth are extracted and compared to what the customer typed.
+- **Given** the extracted data matches and the identity-service API confirms the person, **when** the risk score is below the threshold, **then** the application passes automatically.
+- **Given** a mismatch, a failed liveness check or a risk score above the threshold, **when** verification completes, **then** the application is referred with a recorded reason.
+- **Given** the identity-service API is unavailable, **when** verification is attempted, **then** the application is queued and the customer is told it will continue shortly.
+- **Given** any verification decision, **when** it is made, **then** it is logged with timestamp, outcome and rule applied.
+
+### US-05: Review referred applications
+**As a** compliance analyst, **I want to** see a queue of referred applications with reasons, **so that** I can focus on the cases that need a human.
+**Requirement:** FR-07, FR-08 | **Priority:** Must | **Points:** 8
+
+**Acceptance criteria**
+- **Given** applications have been referred, **when** I open the queue, **then** I see them sorted by age with the referral reason visible.
+- **Given** I open a case, **when** I review it, **then** I can see the uploaded images, extracted data and verification results side by side.
+- **Given** I approve a case, **when** I confirm, **then** the application continues to account creation.
+- **Given** I decline a case, **when** I choose a reason code and confirm, **then** the customer is notified and the decision is logged.
+- **Given** a case has been in the queue for more than 4 working hours, **when** the threshold is passed, **then** it is flagged as overdue.
+
+---
+
+## Epic 3: Open the account
+
+### US-06: Create customer and account automatically
+**As a** branch operations manager, **I want** accounts created automatically in the core banking system, **so that** nobody has to re-type customer data.
+**Requirement:** FR-09 | **Priority:** Must | **Points:** 8
+
+**Acceptance criteria**
+- **Given** an application has passed or been approved, **when** the account creation step runs, **then** the customer and account are created through the core-banking API.
+- **Given** the API call fails, **when** the error is returned, **then** the request is retried up to 3 times and then raised to operations with the application ID.
+- **Given** an account is created, **when** the process completes, **then** the account number is stored against the application record.
+- **Given** the same application is submitted twice, **when** the second request arrives, **then** no duplicate customer or account is created.
+
+### US-07: Review and sign the agreement
+**As a** new customer, **I want to** review and sign my account agreement electronically, **so that** I can open my account without paperwork.
+**Requirement:** FR-10 | **Priority:** Must | **Points:** 5
+
+**Acceptance criteria**
+- **Given** my account is ready, **when** I reach the final step, **then** I see a summary of account type, fees and card details.
+- **Given** I have not ticked the agreement box, **when** I tap "Sign and open account", **then** the button is disabled.
+- **Given** I sign, **when** the signature is saved, **then** a PDF copy is stored and available for download.
+- **Given** I have not signed, **when** I check my account, **then** it is not active (BR-05).
+
+### US-08: Get confirmation and a virtual card
+**As a** new customer, **I want** instant confirmation and a virtual card, **so that** I can start using my account right away.
+**Requirement:** FR-11, FR-12 | **Priority:** Must / Should | **Points:** 5
+
+**Acceptance criteria**
+- **Given** my account is activated, **when** the process completes, **then** I receive an SMS and an email with my account details (account number partly masked).
+- **Given** I open the app, **when** my account is active, **then** my virtual card is visible and can be added to a mobile wallet.
+- **Given** the SMS or email fails to send, **when** the failure is detected, **then** the app shows the confirmation on screen instead.
+
+---
+
+## Epic 4: Handle exceptions and monitor performance
+
+### US-09: Understand why I was declined
+**As a** declined applicant, **I want** a clear explanation and next steps, **so that** I know what I can do next.
+**Requirement:** FR-13 | **Priority:** Should | **Points:** 3
+
+**Acceptance criteria**
+- **Given** my application is declined, **when** I am notified, **then** the message explains the reason in plain language without revealing fraud-detection rules.
+- **Given** I receive a decline message, **when** I read it, **then** it includes how to contact support or visit a branch.
+
+### US-10: Track onboarding funnel performance
+**As a** Head of Retail Banking, **I want** a dashboard of the onboarding funnel, **so that** I can see where customers drop off and measure improvement.
+**Requirement:** FR-15 | **Priority:** Should | **Points:** 8
+
+**Acceptance criteria**
+- **Given** I open the dashboard, **when** it loads, **then** I see applications started, completed, abandoned, referred and declined for a selected period.
+- **Given** I select a step in the funnel, **when** I drill down, **then** I see the drop-off rate for that step.
+- **Given** data refreshes, **when** a new day starts, **then** the dashboard shows data up to the end of the previous day.
+
+### US-11: Assist a customer in branch (Could have)
+**As a** branch consultant, **I want to** start a digital application on behalf of a customer, **so that** customers without smartphones can still use the new process.
+**Requirement:** FR-14 | **Priority:** Could | **Points:** 8
+
+**Acceptance criteria**
+- **Given** I am logged in as a consultant, **when** I start an application, **then** the customer completes verification on the branch tablet.
+- **Given** a consultant-assisted application, **when** it is saved, **then** it records the consultant ID for audit purposes.
+
+---
+
+## Definition of Ready
+- Story has an owner, clear value statement and acceptance criteria
+- Dependencies identified; estimable by the team
+- Wireframe or design available where relevant
+
+## Definition of Done
+- Acceptance criteria met and tested
+- Code reviewed; automated tests pass
+- Security and POPIA checks complete for stories handling personal data
+- Product Owner has accepted the story in sprint review
