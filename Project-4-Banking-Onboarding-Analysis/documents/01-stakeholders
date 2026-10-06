@@ -1,0 +1,28 @@
+# Stakeholder Analysis
+
+| Stakeholder | Role | Main interest | Influence | Interest | Engagement approach |
+|---|---|---|---|---|---|
+| Retail customer | Primary user | Fast, simple, secure account opening | Medium | High | User testing of wireframes and prototype |
+| Branch consultant | Current process operator | Keep a role; less admin | Medium | High | Workshops; involve as digital-assisted-onboarding champions |
+| Compliance / FICA analyst | Regulatory control | Accurate verification, audit trail | High | High | Co-design rules for referral and review queue |
+| Head of Retail Banking | Business sponsor | Growth in new accounts, lower cost per account | High | High | Monthly steering committee; KPI reporting |
+| Product Owner | Backlog owner | Deliver value each sprint | High | High | Daily collaboration; backlog refinement |
+| Development team | Builders | Clear, testable requirements | Medium | High | Refinement sessions; acceptance criteria review |
+| Information Security / Risk | Control owner | Fraud prevention, data protection | High | Medium | Early security review; threat modelling |
+| Core banking / IT operations | System owner | Stable integrations | High | Medium | API contract workshops |
+| Information Regulator / FIC (external) | Regulators | POPIA and FICA compliance | High | Low | Via compliance team |
+| Identity verification vendor | Third-party service | Integration, volumes | Low | Medium | Vendor SLA and API documentation |
+
+## Power / interest grid
+
+- **Manage closely (high power, high interest):** Head of Retail, Product Owner, Compliance, Security
+- **Keep satisfied (high power, lower interest):** Regulators, Core banking / IT operations
+- **Keep informed (lower power, high interest):** Customers, Branch consultants, Development team
+- **Monitor:** Identity vendor
+
+## Key needs captured
+
+- **Customer:** "I don't want to take time off work to go to a branch."
+- **Branch consultant:** "I spend most of my time re-typing forms instead of helping customers."
+- **Compliance analyst:** "I need a complete audit trail and a clear reason for every referral."
+- **Head of Retail:** "I need to see how many accounts are opened and where customers drop off."
